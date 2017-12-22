@@ -49,8 +49,9 @@ module.exports = function(app, mqtt, mongoose){
           });
         });
 
-      }else if (topic.toString() === 'datle/confirm') {
-        //Update the state of digitalpin in db
+      }
+      else if (topic.toString() === 'datle/confirm') {
+        //Update the state of digital pin to db
         var db = mongoose.connect('mongodb://localhost/mydb', option, function(err){
           if(message.toString() === 'autoon' || message.toString() === 'autooff') {
           stateModel.findOneAndUpdate({value: /(auto).*/},
